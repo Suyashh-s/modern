@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-4 text-xs font-orbitron tracking-widest animate-text-flicker">
           <span className="inline-block transform hover:scale-110 transition-transform duration-300">
-            This is just the beginning. More visions loading...
+            This is just the beginning....
           </span>
         </div>
         

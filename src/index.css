@@ -114,13 +114,13 @@
   .glitch-effect::before {
     left: 2px;
     text-shadow: -1px 0 rgba(255, 16, 240, 0.7);
-    animation: glitch-animation 3s infinite linear alternate-reverse;
+    animation: glitch-animation 4s infinite linear alternate-reverse;
   }
   
   .glitch-effect::after {
     left: -2px;
     text-shadow: 1px 0 rgba(0, 255, 255, 0.7);
-    animation: glitch-animation 2s infinite linear alternate-reverse;
+    animation: glitch-animation 3s infinite linear alternate-reverse;
   }
   
   @keyframes glitch-animation {

@@ -32,6 +32,7 @@ const Navbar: React.FC = () => {
     { label: 'Projects', href: '#projects' },
     { label: 'Vision Vault', href: '#vision-vault' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Achievements', href: '#achievements' },
     { label: 'Resume', href: '#resume' },
     { label: 'Contact', href: '#contact' }
   ];
@@ -42,7 +43,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
             <a href="#home" className="font-orbitron text-2xl font-bold neon-text">
-              Suyash<span className="text-neon-purple">.dev</span>
+              SuyashSawant<span className="text-neon-purple">.com</span>
             </a>
           </div>
           
