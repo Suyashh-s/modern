@@ -25,7 +25,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ className }) => {
     resizeCanvas();
     
     // Particle properties
-    const particleCount = 200; // Increased count for more visual impact
+    const particleCount = 125; // Increased count for more visual impact
     const particles: {
       x: number;
       y: number;
