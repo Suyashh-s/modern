@@ -8,7 +8,7 @@ const visionProjects = [
     id: 1,
     title: "Object Recognition System",
     description: "Real-time object detection and classification from video streams",
-    video: "https://placehold.co/600x400/videos/vision1.mp4", // placeholder
+    video: "/videos/vision1.mp4",
     github: "#",
     demo: "#",
     tags: ["YOLO", "Object Detection", "OpenCV", "Python"]
@@ -17,7 +17,7 @@ const visionProjects = [
     id: 2,
     title: "Facial Expression Analyzer",
     description: "Emotion recognition from facial expressions using deep learning",
-    video: "https://placehold.co/600x400/videos/vision2.mp4", // placeholder
+    video: "/videos/vision2.mp4",
     github: "#",
     tags: ["OpenCV", "Deep Learning", "CNN", "TensorFlow"]
   },
@@ -25,7 +25,7 @@ const visionProjects = [
     id: 3,
     title: "clothes detection",
     description: "Control applications using hand gestures captured via webcam",
-    video: "src/assets/clothesdetection.mp4",
+    video: "/videos/clothesdetection.mp4",
     github: "#",
     demo: "#",
     tags: ["Mediapipe", "Computer Vision", "JavaScript"]
@@ -34,7 +34,7 @@ const visionProjects = [
     id: 4,
     title: "Document Scanner",
     description: "Scan and digitize documents with automatic text extraction",
-    video: "https://placehold.co/600x400/videos/vision4.mp4", // placeholder
+    video: "/videos/vision4.mp4",
     github: "#",
     tags: ["OCR", "OpenCV", "Image Processing"]
   }

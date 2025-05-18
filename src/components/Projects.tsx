@@ -8,16 +8,15 @@ const projectsData = [
     id: 1,
     title: "RAKSHA",
     description: "Smart AI surveillance with real-time threat detection for safer streets and women's safety",
-    video: "/src/assets/raksha.mp4", // placeholder
+    video: "/videos/raksha.mp4",
     github: "#",
-  
     tags: ["Node.js", "TensorFlow", "React.js,Flutter"]
   },
   {
     id: 2,
     title: "VYOM ASSITS",
     description: "Business Analytics-Based Appointment Management System for Efficient Customer Service.",
-    video: "/src/assets/vyom.mp4", // placeholder
+    video: "/videos/vyom.mp4",
     github: "#",
     tags: ["Mern Stack", "Bert", "Yolo"]
   },
@@ -25,16 +24,15 @@ const projectsData = [
     id: 3,
     title: "INFLUENCER HUB",
     description: "An ecosystem for brands, influencers, and freelancers to connect, collaborate, and grow—powered by AI matchmaking and real-time analytics.",
-    video: "/src/assets/infhub.mp4", // placeholder
+    video: "/videos/infhub.mp4",
     github: "#",
-  
     tags: ["JavaScript", "D3.js", "React"]
   },
   {
     id: 4,
     title: "LOK YATRI",
     description: "A smart travel companion connecting travelers with authentic local experiences and seamless navigation",
-    video: "/src/assets/lokyatri.mp4", // placeholder
+    video: "/videos/lokyatri.mp4",
     github: "#",
     tags: ["WebSockets", "React Native", "Flask"]
   }
