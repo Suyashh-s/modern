@@ -1,5 +1,5 @@
+
 import React, { useEffect } from 'react';
-import ParticleBackground from '../components/ParticleBackground';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
@@ -8,58 +8,54 @@ import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Achievements from '../components/Achievements';
-import About from '../components/About'; // ✅ Imported About component
+import About from '../components/About';
 
 // Placeholder for Resume section
 const Resume = () => (
-  <section id="resume" className="section-container bg-cyber-darkBlue/50">
-    <h2 className="section-title">Resume</h2>
-    <div className="max-w-3xl mx-auto p-6 bg-cyber-dark/30 backdrop-blur-sm rounded-lg neon-border">
-      <p className="text-center mb-6">View and download my full resume below.</p>
-      <div className="flex justify-center">
-        <a href="#" className="cyber-button">
-          Download PDF Resume
-        </a>
+  <section id="resume" className="section-container">
+    <h2 className="section-title text-center">Resume</h2>
+    <div className="max-w-3xl mx-auto">
+      <div className="professional-card p-8 text-center">
+        <p className="text-muted-foreground mb-8 text-lg">
+          Download my complete resume to learn more about my experience, skills, and achievements.
+        </p>
+        <div className="flex justify-center">
+          <a href="#" className="professional-button">
+            Download PDF Resume
+          </a>
+        </div>
       </div>
     </div>
   </section>
 );
 
 const Index: React.FC = () => {
-  // Animate skill bars on scroll
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const skillBars = entry.target.querySelectorAll('div[style*="width: 0%"]');
-          skillBars.forEach((bar: any, index) => {
-            const width = bar.dataset.width || '0';
-            setTimeout(() => {
-              bar.style.width = width;
-            }, 100 * index);
-          });
+          entry.target.classList.add('animate-fade-in');
         }
       });
     }, { threshold: 0.1 });
 
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      observer.observe(skillsSection);
-    }
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
-      if (skillsSection) {
-        observer.unobserve(skillsSection);
-      }
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-cyber-black font-rajdhani overflow-hidden">
-      <ParticleBackground />
+    <div className="relative min-h-screen bg-background font-inter">
       <Navbar />
       <Hero />
-      <About /> {/* ✅ Using imported About component */}
+      <About />
       <Projects />
       <VisionVault />
       <Skills />
