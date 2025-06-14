@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // Mock vision projects data
@@ -7,7 +8,7 @@ const visionProjects = [
   {
     id: 1,
     title: "Object Recognition System",
-    description: "Real-time object detection and classification from video streams",
+    description: "Real-time object detection and classification from video streams using YOLO and OpenCV",
     video: "/videos/vision1.mp4",
     github: "#",
     demo: "#",
@@ -16,24 +17,24 @@ const visionProjects = [
   {
     id: 2,
     title: "Facial Expression Analyzer",
-    description: "Emotion recognition from facial expressions using deep learning",
+    description: "Emotion recognition from facial expressions using deep learning and computer vision",
     video: "/videos/vision2.mp4",
     github: "#",
     tags: ["OpenCV", "Deep Learning", "CNN", "TensorFlow"]
   },
   {
     id: 3,
-    title: "clothes detection",
-    description: "Control applications using hand gestures captured via webcam",
+    title: "Clothes Detection",
+    description: "Advanced clothing detection and classification system for fashion analytics",
     video: "/videos/clothesdetection.mp4",
     github: "#",
     demo: "#",
-    tags: ["Mediapipe", "Computer Vision", "JavaScript"]
+    tags: ["Computer Vision", "Classification", "JavaScript"]
   },
   {
     id: 4,
     title: "Document Scanner",
-    description: "Scan and digitize documents with automatic text extraction",
+    description: "Intelligent document scanning with automatic text extraction and processing",
     video: "/videos/vision4.mp4",
     github: "#",
     tags: ["OCR", "OpenCV", "Image Processing"]
@@ -41,16 +42,8 @@ const visionProjects = [
 ];
 
 const VisionVault: React.FC = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<typeof visionProjects[0] | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
-
-  const allTags = Array.from(new Set(visionProjects.flatMap(project => project.tags)));
-
-  const filteredProjects = activeFilter 
-    ? visionProjects.filter(project => project.tags.includes(activeFilter))
-    : visionProjects;
 
   const handleProjectClick = (project: typeof visionProjects[0]) => {
     setSelectedProject(project);
@@ -58,107 +51,94 @@ const VisionVault: React.FC = () => {
   };
 
   return (
-    <section id="vision-vault" className="section-container relative bg-cyber-darkBlue">
-      <div className="absolute inset-0 bg-cyber-grid opacity-10"></div>
-      <div className="relative z-10">
-        <h2 className="section-title">Vision Vault</h2>
-        <p className="text-neon-cyan/80 text-center mb-8 font-rajdhani">(AI-Driven Visual Analysis and Detection Projects)</p>
+    <section id="vision-vault" className="section-container bg-gray-50">
+      <h2 className="section-title text-center">Computer Vision Projects</h2>
+      <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
+        Exploring AI and computer vision technologies to solve real-world problems through intelligent visual analysis
+      </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {filteredProjects.map(project => (
-            <div
-              key={project.id}
-              className="group relative overflow-hidden rounded-lg bg-cyber-dark border border-gray-700 hover:border-neon-purple transition-colors duration-300 cursor-pointer"
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-              onClick={() => handleProjectClick(project)}
-            >
-              <div className="aspect-video relative overflow-hidden">
-                <video
-                  className={`w-full h-full object-cover absolute inset-0 transition-all duration-300 ${
-                    hoveredProject === project.id ? 'blur-0 scale-105' : 'blur-sm'
-                  }`}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  src={project.video}
-                >
-                  <source src={project.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {visionProjects.map(project => (
+          <div
+            key={project.id}
+            className="professional-card overflow-hidden cursor-pointer group"
+            onClick={() => handleProjectClick(project)}
+          >
+            <div className="aspect-video relative overflow-hidden">
+              <video
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                autoPlay
+                muted
+                loop
+                playsInline
+                src={project.video}
+              >
+                <source src={project.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
 
-                {/* Overlay text shown when NOT hovered */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-cyber-black via-cyber-black/70 to-transparent p-4 flex flex-col justify-end transition-opacity duration-300 ${
-                  hoveredProject === project.id ? 'opacity-0' : 'opacity-100'
-                }`}>
-                  <h3 className="font-orbitron text-xl text-neon-purple mb-2">{project.title}</h3>
-                  <p className="text-gray-300 text-sm mb-4">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-cyber-dark px-2 py-1 rounded-full text-neon-cyan border border-neon-cyan/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-3">
-                    <a
-                      href={project.github}
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-neon-purple transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={16} />
-                      <span>GitHub</span>
-                    </a>
-
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        className="flex items-center gap-1 text-sm text-gray-300 hover:text-neon-cyan transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={16} />
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-                  </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="text-white">
+                  <h3 className="font-playfair text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-sm opacity-90">{project.description}</p>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* More button */}
-        <div className="flex justify-end mt-8">
-          <a
-            href="#"
-            className="group flex items-center gap-2 px-4 py-2 bg-cyber-dark/70 border border-neon-purple/30 hover:border-neon-purple rounded-md text-neon-purple transition-all duration-300 hover:bg-cyber-dark/90"
-          >
-            <span>Many more...</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
-        </div>
+            <div className="p-6">
+              <h3 className="font-playfair text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
+              <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{project.description}</p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <a
+                  href={project.github}
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Github size={16} />
+                  <span>Code</span>
+                </a>
+
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink size={16} />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Dialog */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="bg-cyber-dark border-neon-purple/50 max-w-3xl w-[90vw]">
+        <DialogContent className="max-w-4xl w-[90vw]">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-orbitron text-neon-purple">{selectedProject?.title}</DialogTitle>
+            <DialogTitle className="text-2xl font-playfair">{selectedProject?.title}</DialogTitle>
           </DialogHeader>
 
           {selectedProject && (
             <div className="mt-4">
-              <div className="aspect-video overflow-hidden rounded-md mb-4">
+              <div className="aspect-video overflow-hidden rounded-md mb-6">
                 <video
                   className="w-full h-full object-cover"
                   autoPlay
@@ -173,39 +153,39 @@ const VisionVault: React.FC = () => {
                 </video>
               </div>
 
-              <p className="text-gray-300 mb-4">{selectedProject.description}</p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{selectedProject.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {selectedProject.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="text-xs bg-cyber-darkBlue/50 px-2 py-1 rounded-full text-neon-cyan border border-neon-cyan/30"
+                    className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-6">
+              <div className="flex gap-4">
                 <a
                   href={selectedProject.github}
-                  className="flex items-center gap-2 px-4 py-2 bg-cyber-dark border border-neon-purple rounded-md text-neon-purple hover:bg-neon-purple/10 transition-colors"
+                  className="professional-button-outline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github size={16} />
-                  <span>View on GitHub</span>
+                  <Github size={20} className="mr-2" />
+                  View Code
                 </a>
 
                 {selectedProject.demo && (
                   <a
                     href={selectedProject.demo}
-                    className="flex items-center gap-2 px-4 py-2 bg-cyber-dark border border-neon-cyan rounded-md text-neon-cyan hover:bg-neon-cyan/10 transition-colors"
+                    className="professional-button"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink size={16} />
-                    <span>View Live Demo</span>
+                    <ExternalLink size={20} className="mr-2" />
+                    Live Demo
                   </a>
                 )}
               </div>
