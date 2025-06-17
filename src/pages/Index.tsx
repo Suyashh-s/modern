@@ -32,7 +32,7 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background font-inter overflow-x-hidden">
+    <div className="relative min-h-screen bg-black text-white font-inter overflow-x-hidden">
       <CinematicNavbar />
       <main>
         <section id="home">

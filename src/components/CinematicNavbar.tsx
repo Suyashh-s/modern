@@ -5,13 +5,13 @@ import { Menu, X, Moon, Sun } from 'lucide-react';
 
 const CinematicNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const { scrollY } = useScroll();
   
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.95)"]
+    ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.95)"]
   );
   
   const backdropBlur = useTransform(
@@ -33,7 +33,6 @@ const CinematicNavbar: React.FC = () => {
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Vision Vault', href: '#vision-vault' },
     { label: 'Contact', href: '#contact' }
   ];
 
@@ -47,7 +46,7 @@ const CinematicNavbar: React.FC = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full z-50 transition-all duration-300"
+      className="fixed top-0 w-full z-50 transition-all duration-300 border-b border-gray-800/30"
       style={{
         backgroundColor,
         backdropFilter: backdropBlur,
@@ -64,14 +63,14 @@ const CinematicNavbar: React.FC = () => {
           >
             <motion.a 
               href="#home" 
-              className="font-playfair text-2xl font-bold glow-text"
+              className="font-bold text-2xl bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
               whileHover={{ scale: 1.05 }}
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick('#home');
               }}
             >
-              Suyash<span className="text-blue-600">Sawant</span>
+              Suyash<span className="text-white">Sawant</span>
             </motion.a>
           </motion.div>
           
@@ -87,7 +86,7 @@ const CinematicNavbar: React.FC = () => {
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  className="relative px-3 py-2 font-medium text-sm text-muted-foreground hover:text-primary 
+                  className="relative px-3 py-2 font-medium text-sm text-gray-300 hover:text-cyan-400 
                   transition-colors duration-300 group"
                   onClick={(e) => {
                     e.preventDefault();
@@ -100,7 +99,7 @@ const CinematicNavbar: React.FC = () => {
                 >
                   {item.label}
                   <motion.span
-                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-blue-600 group-hover:w-full transition-all duration-300"
+                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"
                     whileHover={{ width: "100%" }}
                   />
                 </motion.a>
@@ -109,7 +108,7 @@ const CinematicNavbar: React.FC = () => {
               {/* Theme Toggle */}
               <motion.button
                 onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-full hover:bg-muted/50 transition-colors"
+                className="p-2 rounded-full hover:bg-gray-800/50 transition-colors border border-gray-700/50 hover:border-cyan-400/30"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, scale: 0 }}
@@ -119,7 +118,7 @@ const CinematicNavbar: React.FC = () => {
                 {isDark ? (
                   <Sun size={20} className="text-yellow-500" />
                 ) : (
-                  <Moon size={20} className="text-muted-foreground" />
+                  <Moon size={20} className="text-gray-400" />
                 )}
               </motion.button>
             </motion.div>
@@ -129,21 +128,21 @@ const CinematicNavbar: React.FC = () => {
           <div className="md:hidden flex items-center gap-2">
             <motion.button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-full hover:bg-muted/50 transition-colors"
+              className="p-2 rounded-full hover:bg-gray-800/50 transition-colors border border-gray-700/50 hover:border-cyan-400/30"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
               {isDark ? (
                 <Sun size={20} className="text-yellow-500" />
               ) : (
-                <Moon size={20} className="text-muted-foreground" />
+                <Moon size={20} className="text-gray-400" />
               )}
             </motion.button>
             
             <motion.button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors"
+              className="p-2 rounded-md text-gray-400 hover:text-cyan-400 hover:bg-gray-800/50 transition-colors border border-gray-700/50 hover:border-cyan-400/30"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -170,7 +169,7 @@ const CinematicNavbar: React.FC = () => {
         style={{ overflow: "hidden" }}
       >
         <motion.div 
-          className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-sm border-t border-border/50"
+          className="px-2 pt-2 pb-3 space-y-1 bg-black/95 backdrop-blur-sm border-t border-gray-800/50"
           variants={{
             open: {
               transition: { staggerChildren: 0.07, delayChildren: 0.2 }
@@ -186,8 +185,8 @@ const CinematicNavbar: React.FC = () => {
             <motion.a
               key={item.label}
               href={item.href}
-              className="block px-3 py-2 rounded-md font-medium text-base text-muted-foreground 
-              hover:text-primary hover:bg-muted/50 transition-colors"
+              className="block px-3 py-2 rounded-md font-medium text-base text-gray-300 
+              hover:text-cyan-400 hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-700/50"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick(item.href);
@@ -219,7 +218,7 @@ const CinematicNavbar: React.FC = () => {
       
       {/* Progress Bar */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-blue-600 origin-left"
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 origin-left"
         style={{
           scaleX: useTransform(scrollY, [0, 2000], [0, 1])
         }}
