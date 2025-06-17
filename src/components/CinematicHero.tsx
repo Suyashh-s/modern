@@ -1,14 +1,14 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import profileImage from '../assets/aa.jpg';
 
 const CinematicHero: React.FC = () => {
   const cursorRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const subtitle = "Tech Innovator | Builder | Startup Founder";
+    const subtitle = "Startup Founder | Full Stack Engineer | Tech Strategist";
     const cursor = cursorRef.current;
     
     if (cursor) {
@@ -45,7 +45,7 @@ const CinematicHero: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -99,7 +99,7 @@ const CinematicHero: React.FC = () => {
               className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-2xl shadow-cyan-400/20"
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1], delay: 0.5 }}
               whileHover={{ scale: 1.05 }}
             >
               <img 
@@ -141,7 +141,7 @@ const CinematicHero: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 4 }}
           >
-            Building the Future Through Code
+            Building the future through code, design, and ambition.
           </motion.div>
         </motion.div>
         
@@ -160,7 +160,7 @@ const CinematicHero: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10">Let's Build Something</span>
+            <span className="relative z-10">Let's Connect</span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               whileHover={{ 

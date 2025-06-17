@@ -70,7 +70,7 @@ const CinematicSkills: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -139,7 +139,7 @@ const CinematicSkills: React.FC = () => {
                       className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${category.progress}%` } : { width: 0 }}
-                      transition={{ duration: 1.5, delay: index * 0.2, ease: "easeOut" }}
+                      transition={{ duration: 1.5, delay: index * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                     />
                   </div>
                 </div>

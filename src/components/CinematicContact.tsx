@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Github, Linkedin, Send, MapPin, Phone, ArrowRight } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, ArrowRight } from 'lucide-react';
 
 const CinematicContact: React.FC = () => {
   const ref = useRef(null);
@@ -49,7 +49,7 @@ const CinematicContact: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
