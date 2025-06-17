@@ -1,67 +1,58 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Projects from '../components/Projects';
+import CinematicNavbar from '../components/CinematicNavbar';
+import CinematicHero from '../components/CinematicHero';
+import CinematicAbout from '../components/CinematicAbout';
+import CinematicSkills from '../components/CinematicSkills';
+import CinematicProjects from '../components/CinematicProjects';
 import VisionVault from '../components/VisionVault';
-import Skills from '../components/Skills';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
 import Achievements from '../components/Achievements';
-import About from '../components/About';
-
-// Placeholder for Resume section
-const Resume = () => (
-  <section id="resume" className="section-container">
-    <h2 className="section-title text-center">Resume</h2>
-    <div className="max-w-3xl mx-auto">
-      <div className="professional-card p-8 text-center">
-        <p className="text-muted-foreground mb-8 text-lg">
-          Download my complete resume to learn more about my experience, skills, and achievements.
-        </p>
-        <div className="flex justify-center">
-          <a href="#" className="professional-button">
-            Download PDF Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
+import CinematicContact from '../components/CinematicContact';
+import Footer from '../components/Footer';
 
 const Index: React.FC = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+    // Smooth scroll behavior
+    const handleSmoothScroll = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.hash) {
+        e.preventDefault();
+        const element = document.querySelector(target.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
         }
-      });
-    }, { threshold: 0.1 });
+      }
+    };
 
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    document.addEventListener('click', handleSmoothScroll);
 
     return () => {
-      sections.forEach((section) => {
-        observer.unobserve(section);
-      });
+      document.removeEventListener('click', handleSmoothScroll);
     };
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background font-inter">
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <VisionVault />
-      <Skills />
-      <Achievements />
-      <Resume />
-      <Contact />
+    <div className="relative min-h-screen bg-background font-inter overflow-x-hidden">
+      <CinematicNavbar />
+      <main>
+        <section id="home">
+          <CinematicHero />
+        </section>
+        <section id="about">
+          <CinematicAbout />
+        </section>
+        <section id="skills">
+          <CinematicSkills />
+        </section>
+        <section id="projects">
+          <CinematicProjects />
+        </section>
+        <VisionVault />
+        <Achievements />
+        <section id="contact">
+          <CinematicContact />
+        </section>
+      </main>
       <Footer />
     </div>
   );
